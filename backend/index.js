@@ -11,6 +11,7 @@ app.use(cors())
 app.use('/authenticate', authenticateRouter);
 app.use('/memes', memesRouter);
 
+
 // Listen
 const port = process.env.PORT || 3000;
 
