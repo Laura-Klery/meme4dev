@@ -5,20 +5,20 @@ const multer  = require('multer')
 
 // Stockage image
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-    cb(null, './memes')
+    destination: function (cb) {
+        cb(null, './memes')
     },
-    filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now()
-    const name = file.originalname.split('.')
-    const extension = file.originalname.split('.')
-    cb(null, name[0] + '-' + uniqueSuffix + '.' + extension[1])
+    filename: function (file, cb) {
+        const uniqueSuffix = Date.now()
+        const name = file.originalname.split('.')
+        const extension = file.originalname.split('.')
+        cb(null, name[0] + '-' + uniqueSuffix + '.' + extension[1])
     }
 })
 const upload = multer({ storage: storage  })
 
 	router.route('/')
-	.get(function(req, res) {
+	.get(function(res) {
             fs.readdir('./memes', (err, files) => {
                 if (err) throw err;
                 res.json(files);
@@ -33,8 +33,9 @@ const upload = multer({ storage: storage  })
           const error = new Error('Please upload a file')
           error.httpStatusCode = 400
           return next(error)
+        } else {
+          res.send(file)
         }
-            res.send(file)
     }) 
 
 
