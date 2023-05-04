@@ -41,17 +41,23 @@ const upload = multer({ storage: storage  })
                 .then((meme) => {
                     let textehaut = 'Texte du haut';
                     let textebas = 'Texte du bas';
-                    let xh = jimp.HORIZONTAL_ALIGN_CENTER;
-                    let yh = jimp.VERTICAL_ALIGN_TOP;
-                    let xb = jimp.HORIZONTAL_ALIGN_CENTER;
-                    let yb = jimp.VERTICAL_ALIGN_BOTTOM;
+
 
                     jimp.loadFont(jimp.FONT_SANS_32_WHITE).then(font => {
-                        console.log('font loaded', font)
-                        meme.print(font, yh, xh, textehaut)
-                        meme.print(font, xb, yb, textebas)
-                        meme.write(file.path)
-                      })
+                        console.log('font loaded', font);
+                        meme.print(font, 0, 0, {
+                        text: textehaut,
+                        alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
+                        alignmentY: jimp.VERTICAL_ALIGN_TOP
+                      }, meme.bitmap.width, meme.bitmap.height);
+                      meme.print(font, 0, 0, {
+                        text: textebas,
+                        alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
+                        alignmentY: jimp.VERTICAL_ALIGN_BOTTOM
+                      }, meme.bitmap.width, meme.bitmap.height);
+
+                        meme.write(file.path);
+                      });
                 })
                 .catch((err) => {
                     console.error(err);
