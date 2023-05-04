@@ -10,16 +10,18 @@ const router = express.Router();
             } 
         )
 	})
+    
 	.post(function(req, res) {
 		res.send('Create memes');
         console.log('Create meme')
 	})
+    
+    router.route('/delete/:name')
 	.delete(function(req, res) {
-        fs.unlink((err) => {
+        fs.unlink('./memes/'+req.params.name, (err) => {
             if (err) throw err;
-		    res.send('Le meme a été supprimé.');
-
-          });
+		    res.send(req.params.name+' a été supprimé.');
+        });
 	});
 
 module.exports = router;
