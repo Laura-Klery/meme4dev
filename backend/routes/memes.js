@@ -3,7 +3,7 @@ const fs = require("fs");
 const jimp = require("jimp");
 const router = express.Router();
 const multer = require("multer");
-router.use(express.static('memes'));
+router.use(express.static('memes'))
 
 
 // Stockage image
@@ -22,11 +22,11 @@ const upload = multer({ storage: storage });
 
 // Endpoint all meme
 router.route("/").get(function (req, res) {
-    fs.readdir("./memes", (err, memes) => {
-      if (err) throw err;
-      res.json(memes)
-    });
+  fs.readdir("./memes", (err, memes) => {
+    if (err) throw err;
+    res.json(memes);
   });
+});
 
 
 // Endpoint create meme

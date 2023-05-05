@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       memes: [],
+      baseURL: "http://localhost:3000/memes/"
     };
   },
   mounted() {
@@ -33,7 +34,7 @@ export default {
       <h2>Liste des memes</h2>
       <ul>
         <div v-for="meme in memes" :key="meme">
-          <img :src="meme" :alt="meme" />
+          <img :src="baseURL+meme" :alt="meme" />
         </div>
       </ul>
     </div>
