@@ -3,5 +3,7 @@
 </script>
 
 <template>
-  <RouterView />
+ <div class="icon-button">
+
+ </div>
 </template>

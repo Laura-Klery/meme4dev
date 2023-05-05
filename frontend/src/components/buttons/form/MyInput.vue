@@ -3,5 +3,7 @@
 </script>
 
 <template>
-  <RouterView />
+ <div class="my-input">
+
+ </div>
 </template>

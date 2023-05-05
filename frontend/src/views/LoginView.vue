@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="home">
-    <h1>Accueil</h1>
+  <div class="login">
+    <h1>Se connecter</h1>
   </div>
 </template>
