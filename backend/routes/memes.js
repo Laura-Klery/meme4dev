@@ -3,6 +3,7 @@ const fs = require("fs");
 const jimp = require("jimp");
 const router = express.Router();
 const multer = require("multer");
+router.use(express.static('memes'));
 
 
 // Stockage image
@@ -23,12 +24,7 @@ const upload = multer({ storage: storage });
 router.route("/").get(function (req, res) {
     fs.readdir("./memes", (err, memes) => {
       if (err) throw err;
-      let pathMemes = []
-      for(let i=0; i<memes.length; i++ ){
-        console.log(process.env.BASE_DIR + '\\memes\\'+ memes[i])
-        pathMemes.push(process.env.BASE_DIR + '\\memes\\' + memes[i])
-      }
-      res.send(pathMemes)
+      res.json(memes)
     });
   });
 
