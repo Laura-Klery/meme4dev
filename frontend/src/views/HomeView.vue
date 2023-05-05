@@ -32,8 +32,8 @@ export default {
     <div>
       <h2>Liste des memes</h2>
       <ul>
-        <div v-for="meme in memes" :key="meme.name">
-          <img :src="meme.name" :alt="meme.name" />
+        <div v-for="meme in memes" :key="meme">
+          <img :src="meme" :alt="meme" />
         </div>
       </ul>
     </div>

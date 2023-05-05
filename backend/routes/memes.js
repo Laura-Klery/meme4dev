@@ -4,13 +4,6 @@ const jimp = require("jimp");
 const router = express.Router();
 const multer = require("multer");
 
-// Endpoint all meme
-router.route("/").get(function (res) {
-    fs.readdir("./memes", (err, memes) => {
-      if (err) throw err;
-      res.json(memes);
-    });
-  });
 
 // Stockage image
 const storage = multer.diskStorage({
@@ -26,6 +19,18 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+// Endpoint all meme
+router.route("/").get(function (req, res) {
+    fs.readdir("./memes", (err, memes) => {
+      if (err) throw err;
+      let pathMemes = []
+      for(let i=0; i<memes.length; i++ ){
+        console.log(process.env.BASE_DIR + '\\memes\\'+ memes[i])
+        pathMemes.push(process.env.BASE_DIR + '\\memes\\' + memes[i])
+      }
+      res.send(pathMemes)
+    });
+  });
 
 
 // Endpoint create meme
