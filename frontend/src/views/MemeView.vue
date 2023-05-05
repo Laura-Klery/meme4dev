@@ -1,5 +1,5 @@
 <script>
-import axios from "axios";
+import axios from "axios"
 
 
 export default {
@@ -12,6 +12,7 @@ export default {
   },
 
   methods: {
+    
     submitForm() {
       const form = new FormData()
       form.append('topText', this.topText)
@@ -24,7 +25,9 @@ export default {
       })
         .then(response => {
           console.log(response)
+          
           this.$router.push('/')
+
         })
         .catch(error => {
           console.log(error)
