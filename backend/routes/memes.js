@@ -32,6 +32,8 @@ const upload = multer({ storage: storage  })
     router.route('/create')
     .post(upload.single('meme'), (req, res, next) => {
         const file = req.file
+        const textHaut = req.body.topText
+        const textBas = req.body.bottomText
         if (!file) {
           const error = new Error('Veuillez importer votre image')
           error.httpStatusCode = 400
@@ -39,19 +41,16 @@ const upload = multer({ storage: storage  })
         } else {
             jimp.read(file.path) 
                 .then((meme) => {
-                    let textehaut = 'Texte du haut';
-                    let textebas = 'Texte du bas';
-
-
+                    // TODO: Resizer l'image
+                    meme.resize(1000, jimp.AUTO)
                     jimp.loadFont(jimp.FONT_SANS_32_WHITE).then(font => {
-                        console.log('font loaded', font);
-                        meme.print(font, 0, 0, {
-                        text: textehaut,
+                        meme.print(font, 0, 10, {
+                        text: textHaut,
                         alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
                         alignmentY: jimp.VERTICAL_ALIGN_TOP
                       }, meme.bitmap.width, meme.bitmap.height);
-                      meme.print(font, 0, 0, {
-                        text: textebas,
+                      meme.print(font, 0, -10, {
+                        text: textBas,
                         alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
                         alignmentY: jimp.VERTICAL_ALIGN_BOTTOM
                       }, meme.bitmap.width, meme.bitmap.height);
