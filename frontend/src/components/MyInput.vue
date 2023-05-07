@@ -1,9 +1,40 @@
 <script>
+export default {
+    props: {
+        label: {
+            type: String,
+            default: '',
+            required: true
+        },
+        placeholder: {
+            type: String,
+            default: ''
+        },
+        type: {
+            type: String,
+            default: 'text',
+        },
+        name: {
+            type: String,
+            default: '',
+            required: true
+        },
+        ref: {
+            type: String,
+            default: '',
+        },
+        modelValue: {
+            type: [String, Number],
+            default: '',
+        },
+    },
+}
 
 </script>
 
 <template>
- <div class="my-input">
-
- </div>
+    <div class="my-input">
+        <label class="label"> {{ label }} </label>
+        <input :type="type" :name="name" :placeholder="placeholder" :ref="ref" :v-model="modelValue" />
+    </div>
 </template>

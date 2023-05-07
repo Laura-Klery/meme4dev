@@ -1,18 +1,47 @@
 <script>
 import axios from "axios"
+import MyInput from '../components/MyInput.vue'
+import MyButton from '../components/buttons/MyButton.vue'
 
 
 export default {
+  components: {
+    MyInput,
+    MyButton
+  },
   data() {
     return {
       meme: '',
       topText: '',
-      bottomText: ''
+      bottomText: '',
+
+      inputs: [
+        {
+          label: 'Image du meme',
+          type: 'file',
+          name: 'meme',
+          ref: 'meme',
+        },
+        {
+          label: 'Texte du Haut',
+          placeholder:'Ajouter un texte en haut',
+          type: 'text',
+          name: 'topText',
+          value: 'topText',
+        },
+        {
+          label: 'Texte du Bas',
+          placeholder:'Ajouter un texte en bas',
+          type: 'text',
+          name: 'bottomText',
+          value: 'bottomText',
+        },
+      ]
     };
   },
 
   methods: {
-    
+
     submitForm() {
       const form = new FormData()
       form.append('topText', this.topText)
@@ -25,6 +54,7 @@ export default {
       })
         .then(response => {
           console.log(response)
+
           this.$router.push('/')
 
         })
@@ -40,11 +70,20 @@ export default {
 <template>
   <div class="meme">
     <h1>Créer un meme</h1>
+
     <form ref="myForm" @submit.prevent="submitForm">
-      <input type="file" name="meme" ref="meme" />
+      <MyInput v-for="input in inputs" :key="input.name"
+      :label="input.label"
+      :placeholder="input.placeholder"
+      :type="input.type" 
+      :name="input.name" 
+      :ref="input.ref" 
+      :model-value="input.value"/>
+      <!-- <input type="file" name="meme" ref="meme" />
       <input type="text" name="topText" v-model="topText" />
-      <input type="text" name="bottomText" v-model="bottomText" />
+      <input type="text" name="bottomText" v-model="bottomText" /> -->
       <button type="submit">Envoyer</button>
+      <MyButton></MyButton>
     </form>
   </div>
 </template>
