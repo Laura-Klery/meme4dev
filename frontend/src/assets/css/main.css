@@ -1,0 +1,21 @@
+@layer components;
+@layer utilities;
+@layer base {
+  @font-face {
+    font-family: 'Bruno Ace';
+    src: url('/fonts/BrunoAce-Regular.ttf') format('truetype');
+  }
+    
+  @font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-Medium.ttf') format('truetype');
+  }
+  
+  body {
+    font-family: 'Nunito', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bruno Ace', serif;
+  }
+}
