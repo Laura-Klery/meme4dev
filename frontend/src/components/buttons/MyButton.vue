@@ -1,9 +1,5 @@
-<script>
-
-</script>
-
 <template>
- <div class="my-button">
-
- </div>
+ <button class="my-button">
+   <slot></slot>
+ </button>
 </template>

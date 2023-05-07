@@ -1,15 +1,5 @@
-<script>
-
-
-export default {
-
-
-}
-
-</script>
-
 <template>
- <div class="icon-button">
-    <button>Supprimer</button>
- </div>
+ <button class="icon-button">
+   <slot></slot>
+ </button>
 </template>
