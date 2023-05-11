@@ -1,10 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './assets/css/**/*.css',
-    './components/**/*.{vue,js}',
-    './views/*.{vue,js}',
-    './mains.js'
+    "./index.html",
+    "./src/**/*.{vue,js}",
   ],
   theme: {
     screens: {
@@ -30,46 +28,6 @@ module.exports = {
       '9xl': '4rem', // 64px
     },
     extend: {
-      colors: {
-        primary: {
-          DEFAULT: '#AE9973',
-          'extra-light': '#F2F2F2',
-          lighten: {
-            70: '#E7E0D5',
-            50: '#D7CCB9',
-            25: '#C2B396',
-            10: '#B6A481',
-          },
-          darken: {
-            10: '#9D8A68',
-            25: '#827356',
-            50: '#564D3A',
-            70: '#342E23',
-          },
-        },
-        neutral: {
-          light: {
-            DEFAULT: '#FFFFFF',
-            darken: {
-              4: '#F2F2F2',
-              5: '#F2F2F2',
-              10: '#E5E5E5',
-              25: '#BFBFBF',
-              50: '#7F7F7F',
-              70: '#4C4C4C',
-            },
-          },
-          dark: {
-            DEFAULT: '#2B2A28',
-            lighten: {
-              10: '#41403E',
-              25: '#605F5E',
-              50: '#959594',
-              70: '#C0C0BF',
-            },
-          },
-        },
-      },
     },
     fontFamily: {
       brunoAce: ['Bruno Ace', 'serif'],
