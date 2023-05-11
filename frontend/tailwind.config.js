@@ -27,7 +27,29 @@ module.exports = {
       '8xl': '3.5rem', // 56px
       '9xl': '4rem', // 64px
     },
+    borderRadius: {
+      large: '50px',
+    },
+    colors: {
+      violet: '#9B5DE5',
+      rose: '#F15BB5',
+      bleu: '#00BBF9',
+      vert: '#00F5D4',
+      blanc: '#FFFFFF',
+      contour: '#EFEFEF',
+    },
     extend: {
+      backgroundImage: {
+        'glassmorphism-form': `
+          linear-gradient(rgba(239,239,239,0.6)0%,rgba(255,255,255,0.1)100%)`,
+        'buttons': `
+          linear-gradient(120.37deg, #9B5DE5 0%, #F15BB5 100%)`,
+        'button-create': `
+          linear-gradient(120.37deg, #00BBF9 0%, #00F5D4 100%)`,
+      },
+      boxShadow: {
+        DEFAULT: '0 4px 25px 0 rgba(0,0,0,0.25)',
+      }
     },
     fontFamily: {
       brunoAce: ['Bruno Ace', 'serif'],
