@@ -1,16 +1,17 @@
-@layer components;
-@layer utilities;
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
 @layer base {
   @font-face {
     font-family: 'Bruno Ace';
-    src: url('/fonts/BrunoAce-Regular.ttf') format('truetype');
+    src: url("../../../public/fonts/BrunoAce-Regular.ttf") format('truetype');
   }
-    
+
   @font-face {
     font-family: 'Nunito';
-    src: url('/fonts/Nunito-Medium.ttf') format('truetype');
+    src: url('../../../public/fonts/Nunito-Medium.ttf') format('truetype');
   }
-  
+
   body {
     font-family: 'Nunito', sans-serif;
   }
