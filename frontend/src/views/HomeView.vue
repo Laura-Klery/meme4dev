@@ -84,7 +84,7 @@ export default {
           <p class="text-hero text-sm sm:text-lg">
             Créer votre meme <br />maintenant
           </p>
-          <RouterLink to="/new"> <MyButton class="bg-button-create">Création</MyButton></RouterLink>
+          <RouterLink to="/new"><MyButton class="bg-button-create">Création</MyButton></RouterLink>
         </div>
         <div class="img-hero">
           <img
@@ -94,24 +94,21 @@ export default {
           />
         </div>
       </div>
-
-      <span class="icon-scroll grid place-content-center my-8 opacity-30"
-        ><i @click="scrollToBottom" class="fa-solid fa-chevron-down text-3xl sm:text-6xl"></i
-      ></span>
+      <span class="icon-scroll grid place-content-center my-8 opacity-30">
+        <i @click="scrollToBottom" class="fa-solid fa-chevron-down text-3xl sm:text-6xl"></i>
+      </span>
     </section>
     <section class="section-memes bg-blanc backdrop-blur-lg bg-opacity-30 border border-contour py-8 px-4 sm:p-8 rounded-2xl">
       <div class="grid gap-4 sm:gap-2 sm:grid-cols-2 md:gap-4 md:grid-cols-4">
         <article v-for="meme in memes" :key="meme">
           <div class="flex justify-end gap-2 my-2">
-            <IconButton @click="downloadMeme(meme)"
-              ><i class="fa-solid fa-download text-sm"></i
-            ></IconButton>
-            <IconButton
-              ><i @click="deleteMeme(meme)" class="fa-solid fa-xmark text-md"></i
-            ></IconButton>
-           
+            <IconButton @click="downloadMeme(meme)">
+              <i class="fa-solid fa-download text-sm"></i>
+            </IconButton>
+            <IconButton>
+              <i @click="deleteMeme(meme)" class="fa-solid fa-xmark text-md"></i>
+            </IconButton>
           </div>
-
           <MyCard :meme="meme" />
         </article>
       </div>
@@ -120,10 +117,10 @@ export default {
       </div>
     </section>
     <section class="section-insta flex justify-center items-center gap-6 sm:gap-8 bg-blanc backdrop-blur-lg bg-opacity-30 border border-blanc py-8 px-4 sm:w-1/3 my-12 mx-auto rounded-2xl">
-      <h3 class="text-base sm:texy-3xl">Publiez vos memes</h3>
-      <a href="https://www.instagram.com/"
-        ><i class="fa-brands fa-instagram text-bleu text-6xl sm:text-9xl"></i
-      ></a>
+      <h3 class="text-base sm:text-3xl">Publiez vos memes</h3>
+      <a href="https://www.instagram.com/">
+        <i class="fa-brands fa-instagram text-bleu text-6xl sm:text-9xl"></i>
+      </a>
     </section>
   </div>
 </template>

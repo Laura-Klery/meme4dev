@@ -42,7 +42,7 @@ router.route("/create").post(upload.single("meme"), (req, res, next) => {
     jimp
       .read(file.path)
       .then((meme) => {
-        // TODO: Resizer l'image
+        // TODO: Shodow sur le texte de l'image
         meme.resize(1000, jimp.AUTO);
         jimp.loadFont(jimp.FONT_SANS_32_WHITE).then((font) => {
           meme.print(

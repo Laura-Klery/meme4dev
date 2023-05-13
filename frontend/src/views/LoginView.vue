@@ -3,10 +3,10 @@ import MyInput from '../components/MyInput.vue'
 import MyButton from '../components/buttons/MyButton.vue'
 
 export default {
-    components: {
-        MyInput,
-        MyButton
-    }
+  components: {
+    MyInput,
+    MyButton
+  }
 }
 </script>
 

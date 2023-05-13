@@ -1,5 +1,5 @@
 <script>
-import axios from "axios"
+import axios from 'axios'
 import MyInput from '../components/MyInput.vue'
 import MyButton from '../components/buttons/MyButton.vue'
 
@@ -55,7 +55,6 @@ export default {
         .then(response => {
           console.log(response)
           this.$router.push('/')
-
         })
         .catch(error => {
           console.log(error)
@@ -69,7 +68,6 @@ export default {
 <template>
   <div class="meme">
     <h1>Créer un meme</h1>
-
     <form ref="myForm" @submit.prevent="submitForm">
       <!-- <MyInput v-for="input in inputs" :key="input.name"
       :label="input.label"
