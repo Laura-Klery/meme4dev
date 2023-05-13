@@ -118,7 +118,7 @@ export default {
     </section>
     <section class="section-insta flex justify-center items-center gap-6 sm:gap-8 bg-blanc backdrop-blur-lg bg-opacity-30 border border-blanc py-8 px-4 sm:w-1/3 my-12 mx-auto rounded-2xl">
       <h3 class="text-base sm:text-3xl">Publiez vos memes</h3>
-      <a href="https://www.instagram.com/">
+      <a href="https://www.instagram.com/" target="_blank">
         <i class="fa-brands fa-instagram text-bleu text-6xl sm:text-9xl"></i>
       </a>
     </section>
