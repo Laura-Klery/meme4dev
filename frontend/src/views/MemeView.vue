@@ -54,7 +54,6 @@ export default {
       })
         .then(response => {
           console.log(response)
-
           this.$router.push('/')
 
         })
@@ -72,18 +71,17 @@ export default {
     <h1>Créer un meme</h1>
 
     <form ref="myForm" @submit.prevent="submitForm">
-      <MyInput v-for="input in inputs" :key="input.name"
+      <!-- <MyInput v-for="input in inputs" :key="input.name"
       :label="input.label"
       :placeholder="input.placeholder"
       :type="input.type" 
       :name="input.name" 
       :ref="input.ref" 
-      :model-value="input.value"/>
-      <!-- <input type="file" name="meme" ref="meme" />
+      :model-value="input.value"/> -->
+      <input type="file" name="meme" ref="meme" />
       <input type="text" name="topText" v-model="topText" />
-      <input type="text" name="bottomText" v-model="bottomText" /> -->
+      <input type="text" name="bottomText" v-model="bottomText" />
       <button type="submit">Envoyer</button>
-      <MyButton></MyButton>
     </form>
   </div>
 </template>

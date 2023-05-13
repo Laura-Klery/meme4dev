@@ -14,9 +14,12 @@
 
   body {
     font-family: 'Nunito', sans-serif;
+    background: black url(../img/background.png) no-repeat fixed;
+    color: white;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, .text-hero {
     font-family: 'Bruno Ace', serif;
+    color: white;
   }
 }

@@ -22,11 +22,7 @@ export default {
         ref: {
             type: String,
             default: '',
-        },
-        modelValue: {
-            type: [String, Number],
-            default: '',
-        },
+        }
     },
 }
 
@@ -35,6 +31,9 @@ export default {
 <template>
     <div class="my-input">
         <label class="label"> {{ label }} </label>
-        <input :type="type" :name="name" :placeholder="placeholder" :ref="ref" :v-model="modelValue" />
+        <input :type="type" :name="name" :placeholder="placeholder" :ref="ref"/>
     </div>
+    
 </template>
+
+

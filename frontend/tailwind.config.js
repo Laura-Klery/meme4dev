@@ -5,6 +5,9 @@ module.exports = {
     "./src/**/*.{vue,js}",
   ],
   theme: {
+    container: {
+      center: true,
+    },
     screens: {
       xs: '360px',
       sm: '768px',
@@ -26,9 +29,6 @@ module.exports = {
       '7xl': '3rem', // 48px
       '8xl': '3.5rem', // 56px
       '9xl': '4rem', // 64px
-    },
-    borderRadius: {
-      large: '50px',
     },
     colors: {
       violet: '#9B5DE5',

@@ -8,7 +8,8 @@ export default {
 <template>
   <header class="main-header">
     <div class="logo">
-      <img src="@/assets/img/logo.svg" alt="Logo Meme4Dev">
+      <RouterLink to="/"><img src="@/assets/img/logo.svg" alt="Logo Meme4Dev"></RouterLink>
+
     </div>
     <nav>
         <RouterLink to="/">Accueil</RouterLink>
