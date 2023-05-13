@@ -94,7 +94,7 @@ export default {
           />
         </div>
       </div>
-      <span class="icon-scroll grid place-content-center my-8 opacity-30">
+      <span class="icon-scroll grid place-content-center my-8 opacity-30 cursor-pointer">
         <i @click="scrollToBottom" class="fa-solid fa-chevron-down text-3xl sm:text-6xl"></i>
       </span>
     </section>
