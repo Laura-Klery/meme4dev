@@ -37,6 +37,8 @@ module.exports = {
       vert: '#00F5D4',
       blanc: '#FFFFFF',
       contour: '#EFEFEF',
+      noir: '#1f1f1f',
+      transparent:'rgba(255, 255, 255, 0.3)'
     },
     extend: {
       backgroundImage: {
@@ -49,7 +51,10 @@ module.exports = {
       },
       boxShadow: {
         DEFAULT: '0 4px 25px 0 rgba(0,0,0,0.25)',
-      }
+      },
+      minHeight: {
+        '80': '85vh',
+      },
     },
     fontFamily: {
       brunoAce: ['Bruno Ace', 'serif'],

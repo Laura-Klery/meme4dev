@@ -24,14 +24,14 @@ export default {
         },
         {
           label: 'Texte du Haut',
-          placeholder:'Ajouter un texte en haut',
+          placeholder: 'Ajouter un texte en haut',
           type: 'text',
           name: 'topText',
           value: 'topText',
         },
         {
           label: 'Texte du Bas',
-          placeholder:'Ajouter un texte en bas',
+          placeholder: 'Ajouter un texte en bas',
           type: 'text',
           name: 'bottomText',
           value: 'bottomText',
@@ -66,20 +66,18 @@ export default {
 </script>
 
 <template>
-  <div class="meme">
-    <h1>Créer un meme</h1>
-    <form ref="myForm" @submit.prevent="submitForm">
-      <!-- <MyInput v-for="input in inputs" :key="input.name"
-      :label="input.label"
-      :placeholder="input.placeholder"
-      :type="input.type" 
-      :name="input.name" 
-      :ref="input.ref" 
-      :model-value="input.value"/> -->
-      <input type="file" name="meme" ref="meme" />
+  <section class="min-h-80 flex items-center">
+    <div
+      class="flex flex-col sm:p-10 xs:p-5 meme border border-blanc rounded-xl w-fit bg-contour bg-opacity-30 backdrop-blur-lg px-1 py-5 mx-auto justify-center">
+      <h1 class="sm:text-3xl text-center text-xl">Créer un meme</h1>
+      <form class="flex flex-col" ref="myForm" @submit.prevent="submitForm">
+        <MyInput v-for="input in inputs" :key="input.name" :label="input.label" :placeholder="input.placeholder"
+          :type="input.type" :name="input.name" :ref="input.ref" :model-value="input.value" />
+        <!-- <input type="file" name="meme" ref="meme" />
       <input type="text" name="topText" v-model="topText" />
-      <input type="text" name="bottomText" v-model="bottomText" />
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
+      <input type="text" name="bottomText" v-model="bottomText" /> -->
+        <MyButton type="submit">Envoyer</MyButton>
+      </form>
+    </div>
+  </section>
 </template>
