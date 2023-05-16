@@ -1,19 +1,43 @@
+<template>
+<div>
+    <div class="bg-gray-100">
+        <nav class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between">
+                <RouterLink to="/" class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-400"><img src="@/assets/img/logo.svg" alt="Logo Meme4Dev" class="p-2"></RouterLink>
+                <!-- Mobile menu button -->
+                <div @click="showMenu = !showMenu" class="flex md:hidden">
+                    <button type="button" class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400">
+                      <i class="fa-solid fa-bars text-3xl sm:text-6xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+            <ul :class="showMenu ? 'flex' : 'hidden'" class="flex-col items-end mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0 bg-blanc backdrop-blur-lg bg-opacity-30 border border-contour rounded-lg p-6 md:bg-none md:backdrop-blur-none md:bg-opacity-0 md:border-none " >
+                <li class="text-lg  text-gray-800 hover:text-blue-400">
+                    <RouterLink to="/">Accueil</RouterLink>
+                </li>
+                <li class="text-lg text-gray-800 hover:text-blue-400">
+                    <RouterLink to="/new">Création</RouterLink>
+                </li>
+                <li>
+                    <RouterLink to="/login">
+                        <MyButton class="bg-buttons">Connexion</MyButton>
+                    </RouterLink>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
+</template>
+
 <script>
 export default {
-  data() {
-    return {
-      isOpen: false,
-    }
-  },
-}
+    data() {
+        return {
+            showMenu: false,
+        };
+    },
+};
 </script>
-<template>
-  <header class="mx-2 flex items-center justify-between">
-    <RouterLink to="/"><img src="@/assets/img/logo.svg" alt="Logo Meme4Dev" class="p-2"></RouterLink>
-    <nav class="lg:flex lg:justify-end lg:items-center space-x-24 lg:text-center">
-      <RouterLink to="/">Accueil</RouterLink>
-      <RouterLink to="/new">Création</RouterLink>
-      <RouterLink to="/login"><MyButton class="bg-buttons">Connexion</MyButton></RouterLink>
-    </nav>
-  </header>
-</template>
