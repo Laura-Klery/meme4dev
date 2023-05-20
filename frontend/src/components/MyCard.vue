@@ -16,6 +16,7 @@ export default {
 
 <template>
   <div class="my-card">
-    <img :src="baseURL + meme" :alt="meme" class="rounded-lg object-cover h-48 w-96 transition delay-150 duration-300 hover:ease-in-out" />
+    <img :src="baseURL + meme" :alt="meme" class="rounded-lg object-cover h-48 w-96 transform transition-all duration-300 shadow hover:shadow-lg hover:scale-95" />
   </div>
 </template>
+
