@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const jimp = require("jimp");
+const fpath = require('path')
 const router = express.Router();
 const multer = require("multer");
 router.use(express.static('memes'))
@@ -24,6 +25,11 @@ const upload = multer({ storage: storage });
 router.route("/").get(function (req, res) {
   fs.readdir("./memes", (err, memes) => {
     if (err) throw err;
+    memes.sort((a, b) => {
+      const memeA = fs.statSync("./memes/" + a);
+      const memeB = fs.statSync("./memes/" + b);
+      return memeB.ctimeMs - memeA.ctimeMs;
+    });
     res.json(memes);
   });
 });
@@ -42,8 +48,9 @@ router.route("/create").post(upload.single("meme"), (req, res, next) => {
     jimp
       .read(file.path)
       .then((meme) => {
-        // TODO: Shodow sur le texte de l'image
-        meme.resize(1000, jimp.AUTO);
+        // let pathFont = fpath.resolve(__dirname,'polices/font.fnt')
+        meme.resize(500, jimp.AUTO);
+        meme.contrast(-0.5);
         jimp.loadFont(jimp.FONT_SANS_32_WHITE).then((font) => {
           meme.print(
             font,
@@ -53,6 +60,8 @@ router.route("/create").post(upload.single("meme"), (req, res, next) => {
               text: textHaut,
               alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
               alignmentY: jimp.VERTICAL_ALIGN_TOP,
+              stroke: '#000000',      // Couleur des contours (noir)
+              strokeThickness: 2     // Épaisseur des contours
             },
             meme.bitmap.width,
             meme.bitmap.height
@@ -65,6 +74,8 @@ router.route("/create").post(upload.single("meme"), (req, res, next) => {
               text: textBas,
               alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
               alignmentY: jimp.VERTICAL_ALIGN_BOTTOM,
+              stroke: '#000000',      // Couleur des contours (noir)
+              strokeThickness: 2     // Épaisseur des contours
             },
             meme.bitmap.width,
             meme.bitmap.height
