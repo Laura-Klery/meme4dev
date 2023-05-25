@@ -1,10 +1,23 @@
 <script>
+import {mapStores} from "pinia";
+import {useAuthenticateStore} from "@/stores/authenticate";
+
 export default {
   data() {
     return {
       showMenu: false,
-    };
+      logout: 'Déconnection',
+    }
   },
+  computed: {
+    ...mapStores(useAuthenticateStore),
+  },
+  methods: {
+    toLogout() {
+      this.authenticateStore.authenticated = false
+      this.$router.push('/login')
+    },
+  }
 };
 </script>
 
@@ -12,12 +25,12 @@ export default {
   <header class="bg-gray-100">
     <nav class="md:container px-6 md:py-2 mx-auto md:flex md:justify-between md:items-center">
       <div class="flex items-center justify-between">
-        <RouterLink to="/"><img src="@/assets/img/logo.svg" alt="Logo Meme4Dev" class="p-2 w-2/3 md:w-full"></RouterLink>
+        <RouterLink to="/"><img src="@/assets/img/logo.svg" alt="Logo Meme4Dev" class="p-2 w-2/3 md:w-full transform hover:scale-110 transition-all duration-300"></RouterLink>
         <!-- Mobile menu button -->
         <div @click="showMenu = !showMenu" class="flex md:hidden">
-          <button type="button" class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400">
+          <IconButton type="button" class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400">
             <i class="fa-solid fa-bars text-3xl sm:text-6xl"></i>
-          </button>
+          </IconButton>
         </div>
       </div>
 
@@ -29,11 +42,9 @@ export default {
         <li class="text-lg text-gray-800 hover:text-bleu">
           <RouterLink to="/new">Création</RouterLink>
         </li>
-        <li>
-          <RouterLink to="/login">
-            <MyButton class="bg-buttons hover:bg-buttons-hover hover:shadow-lg transition-all duration-300 ease-in-out">Connexion</MyButton>
-          </RouterLink>
-        </li>
+        <template v-if="authenticateStore.authenticated === true">
+          <MyButton class="bg-buttons hover:bg-buttons-hover hover:shadow-lg transition-all duration-300 ease-in-out" @click="toLogout()">{{ logout }}</MyButton>
+        </template>
       </ul>
     </nav>
   </header>

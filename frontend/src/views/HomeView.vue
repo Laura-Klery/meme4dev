@@ -1,11 +1,11 @@
 <script>
 import axios from "axios";
-import IconButton from "@/components/buttons/IconButton.vue";
+import { mapStores } from 'pinia';
+import { useAuthenticateStore } from "@/stores/authenticate";
 import MyCard from "@/components/MyCard.vue";
 
 export default {
   components: {
-    IconButton,
     MyCard,
   },
   data() {
@@ -17,10 +17,19 @@ export default {
       visibleMemes: 8, // Nombre de memes initialement visibles
     };
   },
+  computed: {
+    ...mapStores(useAuthenticateStore),
+  },
   mounted() {
     this.getMemes();
+    this.isAuthenticated();
   },
   methods: {
+    isAuthenticated() {
+      if(this.authenticateStore.authenticated === false) {
+        return this.$router.push('/login')
+      }
+    },
     scrollToBottom() {
       const memesSection = document.querySelector(".section-memes");
       memesSection.scrollIntoView({ behavior: "smooth" });
@@ -30,7 +39,7 @@ export default {
         .get("http://127.0.0.1:3000/memes")
         .then((response) => {
           console.log(response.data);
-          this.memes = response.data;
+          this.memes = response.data.sort((a, b) => b.date - a.date);
           this.displayedMemes = this.memes.slice(0, this.visibleMemes);
         })
         .catch((error) => {

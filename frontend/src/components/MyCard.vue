@@ -9,9 +9,9 @@ export default {
   data() {
     return {
       baseURL: "http://localhost:3000/memes/",
-    };
+    }
   },
-};
+}
 </script>
 
 <template>

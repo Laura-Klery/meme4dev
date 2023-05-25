@@ -1,10 +1,16 @@
 <script>
 import axios from "axios";
+import { mapStores } from 'pinia';
 import LoginForm from "@/components/forms/LoginForm.vue";
+import { useAuthenticateStore } from "@/stores/authenticate";
+
 
 export default {
   components: {
     LoginForm,
+  },
+  computed: {
+    ...mapStores(useAuthenticateStore),
   },
   methods: {
     onFormSubmit(form) {
@@ -13,8 +19,13 @@ export default {
         password: form.password,
       })
         .then(response => {
-          console.log(response)
-          this.$router.push('/')
+          if(response.status === 200) {
+            this.authenticateStore.authenticated = true
+            console.log(response)
+            this.$router.push('/')
+          } else {
+            this.$router.push('/login')
+          }
         })
         .catch(error => {
           console.log(error)

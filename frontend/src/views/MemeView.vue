@@ -1,12 +1,25 @@
 <script>
 import axios from 'axios';
+import { mapStores } from 'pinia';
+import { useAuthenticateStore } from "@/stores/authenticate";
 import CreateMemeForm from "@/components/forms/CreateMemeForm.vue";
 
 export default {
   components: {
     CreateMemeForm,
   },
+  computed: {
+    ...mapStores(useAuthenticateStore),
+  },
+  mounted() {
+    this.isAuthenticated();
+  },
   methods: {
+    isAuthenticated() {
+      if(this.authenticateStore.authenticated === false) {
+        return this.$router.push('/login')
+      }
+    },
     onFormSubmit(form) {
       console.log('form.meme =>',form.meme)
       axios.post('http://localhost:3000/memes/create',

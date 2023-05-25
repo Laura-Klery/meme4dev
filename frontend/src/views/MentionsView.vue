@@ -25,6 +25,5 @@
 
     <h2 class="text-lg sm:text-3xl">8. Juridiction compétente :</h2>
     <p class="pb-5">Les présentes mentions légales sont régies et interprétées conformément aux lois en vigueur en France. En cas de litige, les tribunaux français seront seuls compétents.</p>
-
   </div>
 </template>
