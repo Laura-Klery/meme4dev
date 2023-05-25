@@ -1,57 +1,42 @@
 <script>
-import axios from "axios";
-import MyButton from "../components/buttons/MyButton.vue";
+import axios from 'axios';
+import CreateMemeForm from "@/components/forms/CreateMemeForm.vue";
 
 export default {
   components: {
-    MyButton,
+    CreateMemeForm,
   },
-  data() {
-    return {
-      meme: "",
-      topText: "",
-      bottomText: "",
-    };
-  },
-
   methods: {
-    submitForm() {
-      const form = new FormData();
-      form.append("topText", this.topText);
-      form.append("bottomText", this.bottomText);
-      form.append("meme", this.$refs.meme.$refs.files[0]);
-      axios
-        .post("http://localhost:3000/memes/create", form, {
+    onFormSubmit(form) {
+      console.log('form.meme =>',form.meme)
+      axios.post('http://localhost:3000/memes/create',
+        {
+          meme: form.meme,
+          bottomText: form.bottomText,
+          topText: form.topText
+        },
+        {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data'
           },
         })
-        .then((response) => {
-          console.log(response);
-          this.$router.push("/");
+        .then(response => {
+          console.log('response.data =>', response.data)
+          this.$router.push('/')
         })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  }
 };
 </script>
 
 <template>
   <section class="min-h-80 flex items-center">
-    <div
-      class="flex flex-col sm:p-10 xs:p-5 meme border border-blanc rounded-xl w-fit bg-contour bg-opacity-30 backdrop-blur-lg px-1 py-5 mx-auto justify-center"
-    >
-      <h1 class="sm:text-3xl text-center text-xl">Créer un meme</h1>
-      <!-- <form class="flex flex-col" ref="myForm" @submit.prevent="submitForm">
-        <MyInput v-for="input in inputs" :key="input.name" :label="input.label" :placeholder="input.placeholder"
-          :type="input.type" :name="input.name" :ref="input.ref" :model-value="input.value" /> -->
-      <!-- <input type="file" name="meme" ref="meme" />
-      <input type="text" name="topText" v-model="topText" />
-      <input type="text" name="bottomText" v-model="bottomText" /> -->
-      <!-- <MyButton type="submit">Envoyer</MyButton>
-      </form> -->
+    <div class="flex flex-col sm:p-10 xs:p-5 border border-blanc rounded-xl w-fit bg-contour bg-opacity-30 backdrop-blur-lg px-1 py-5 mx-auto justify-center">
+      <h1 class="sm:text-3xl text-center text-xl mb-4">Créer un meme</h1>
+      <CreateMemeForm class="flex flex-col" @onSubmit="onFormSubmit($event)" />
     </div>
   </section>
 </template>

@@ -19,4 +19,3 @@ export default {
     <img :src="baseURL + meme" :alt="meme" class="rounded-lg object-cover h-48 w-96 transform transition-all duration-300 shadow hover:shadow-lg hover:scale-95" />
   </div>
 </template>
-

@@ -1,6 +1,6 @@
 <script>
-import MainHeader from "./components/MainHeader.vue";
-import MainFooter from "./components/MainFooter.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import MainFooter from "@/components/MainFooter.vue";
 
 export default {
   components: {
@@ -13,7 +13,9 @@ export default {
 <template>
   <div class="app">
     <MainHeader />
-    <RouterView />
+    <main class="min-h-80 mt-4 lg:mt-0">
+      <RouterView />
+    </main>
     <MainFooter />
   </div>
 </template>

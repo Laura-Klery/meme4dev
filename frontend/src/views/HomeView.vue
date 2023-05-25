@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
-import IconButton from "../components/buttons/IconButton.vue";
-import MyCard from "../components/MyCard.vue";
+import IconButton from "@/components/buttons/IconButton.vue";
+import MyCard from "@/components/MyCard.vue";
 
 export default {
   components: {
@@ -87,25 +87,17 @@ export default {
   },
 };
 </script>
+
 <template>
   <div class="home max-w-screen-xl container mx-auto px-8">
     <section class="section-hero min-h-screen grid justify-items-stretch">
-      <div
-        class="content flex flex-col gap-4 sm:flex-row items-center justify-center sm:gap-6"
-      >
-        <div
-          class="content-hero text-center sm:text-left flex flex-col gap-4 sm:gap-3"
-        >
+      <div class="content flex flex-col gap-4 sm:flex-row items-center justify-center sm:gap-6">
+        <div class="content-hero text-center sm:text-left flex flex-col gap-4 sm:gap-3">
           <h1 class="h1-hero text-4xl sm:text-8xl">Meme4Dev</h1>
-          <p class="text-hero text-sm sm:text-lg">
-            Créer votre meme <br />maintenant
-          </p>
-          <RouterLink to="/new"
-            ><MyButton
-              class="bg-button-create hover:bg-button-create-hover hover:shadow-lg transition-all duration-300 ease-in-out"
-              >Création</MyButton
-            ></RouterLink
-          >
+          <p class="text-hero text-sm sm:text-lg">Créer votre meme <br />maintenant</p>
+          <RouterLink to="/new">
+            <MyButton class="bg-button-create hover:bg-button-create-hover hover:shadow-lg transition-all duration-300 ease-in-out">Création</MyButton>
+          </RouterLink>
         </div>
         <div class="img-hero">
           <img
@@ -115,18 +107,11 @@ export default {
           />
         </div>
       </div>
-      <span
-        class="icon-scroll grid justify-self-center my-8 opacity-30 cursor-pointer"
-      >
-        <i
-          @click="scrollToBottom"
-          class="fa-solid fa-chevron-down text-3xl sm:text-6xl"
-        ></i>
+      <span class="icon-scroll grid justify-self-center my-8 opacity-30 cursor-pointer hover:transition hover:ease-in-out hover:duration-150 hover:animate-bounce">
+        <i @click="scrollToBottom" class="fa-solid fa-chevron-down text-3xl sm:text-6xl"></i>
       </span>
     </section>
-    <section
-      class="section-memes bg-blanc backdrop-blur-lg bg-opacity-30 border border-contour py-6 px-4 sm:p-8 rounded-2xl"
-    >
+    <section class="section-memes bg-blanc backdrop-blur-lg bg-opacity-30 border border-contour py-6 px-4 sm:p-8 rounded-2xl">
       <div class="grid gap-4 sm:gap-2 sm:grid-cols-2 md:gap-4 md:grid-cols-4">
         <article v-for="meme in displayedMemes" :key="meme">
           <div class="flex justify-end gap-2 my-2">
@@ -134,10 +119,7 @@ export default {
               <i class="fa-solid fa-download text-sm"></i>
             </IconButton>
             <IconButton>
-              <i
-                @click="deleteMeme(meme)"
-                class="fa-solid fa-xmark text-md"
-              ></i>
+              <i @click="deleteMeme(meme)" class="fa-solid fa-xmark text-md"></i>
             </IconButton>
           </div>
           <MyCard :meme="meme" />
@@ -147,12 +129,7 @@ export default {
         class="grid place-content-center my-10"
         v-if="displayedMemes.length < memes.length"
       >
-        <MyButton
-          class="bg-buttons hover:bg-buttons-hover hover:shadow-lg transition-all duration-300 ease-in-out"
-          @click="loadMoreMemes"
-        >
-          Afficher plus
-        </MyButton>
+        <MyButton class="bg-buttons hover:bg-buttons-hover hover:shadow-lg transition-all duration-300 ease-in-out" @click="loadMoreMemes">Afficher plus</MyButton>
       </div>
     </section>
     <section
@@ -160,7 +137,7 @@ export default {
     >
       <h3 class="text-base md:text-3xl">Publiez vos memes</h3>
       <a href="https://www.instagram.com/" target="_blank">
-        <i class="fa-brands fa-instagram text-bleu text-6xl sm:text-9xl"></i>
+        <i class="fa-brands fa-instagram text-bleu text-6xl sm:text-9xl transform hover:scale-110 transition-all duration-300"></i>
       </a>
     </section>
   </div>
