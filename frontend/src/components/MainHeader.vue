@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       showMenu: false,
-      logout: 'Déconnection',
+      logout: 'Déconnexion',
     }
   },
   computed: {

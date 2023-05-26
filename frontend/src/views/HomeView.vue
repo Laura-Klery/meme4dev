@@ -63,7 +63,6 @@ export default {
       axios
         .delete(`http://localhost:3000/memes/delete/${memeName}`)
         .then((response) => {
-          console.log(response.data);
           // Mettre à jour la liste des memes en supprimant le meme supprimé
           this.memes = this.memes.filter((meme) => meme.name !== memeName);
           this.getMemes();

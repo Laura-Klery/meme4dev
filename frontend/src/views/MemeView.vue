@@ -34,7 +34,6 @@ export default {
           },
         })
         .then(response => {
-          console.log('response.data =>', response.data)
           this.$router.push('/')
         })
         .catch(error => {
